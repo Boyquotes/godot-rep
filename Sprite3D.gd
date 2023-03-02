@@ -20,7 +20,7 @@ func _ready():
 func _input(event):
 	sprite = get_child(2)
 	if event is InputEventMouseMotion:
-		print(get_mouse_degrees(event.position, {'x':509, 'y':301}))
+		print(get_mouse_degrees({'x':509 - event.position.x, 'y': 301 - event.position.y}, {'x':-509, 'y':301}))
 
 
 func _process(delta):

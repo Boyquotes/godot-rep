@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dccpkvw54icc3"]
 
-[ext_resource type="PackedScene" path="res://KinematicBody.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://wwsua6ivotlj" path="res://KinematicBody.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://b7h8ia2o2e8wm" path="res://textures/pol.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://ci411gte7r60t" path="res://textures/stenA.png" id="3"]
 
