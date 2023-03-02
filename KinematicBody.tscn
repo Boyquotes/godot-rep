@@ -1,0 +1,87 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BEG4.png" type="Texture2D" id=1]
+[ext_resource path="res://Sprite3D.gd" type="Script" id=2]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BOK_BEG2.png" type="Texture2D" id=3]
+[ext_resource path="res://textures/gg_DEMON_SWORD/PERED_BEG1.png" type="Texture2D" id=4]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BOK_BEG3.png" type="Texture2D" id=5]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BOK_BEG4.png" type="Texture2D" id=6]
+[ext_resource path="res://textures/gg_DEMON_SWORD/BOK_BEG2.png" type="Texture2D" id=7]
+[ext_resource path="res://textures/gg_DEMON_SWORD/PERED_BEG2.png" type="Texture2D" id=8]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BEG1.png" type="Texture2D" id=9]
+[ext_resource path="res://textures/gg_DEMON_SWORD/BOK_BEG4.png" type="Texture2D" id=10]
+[ext_resource path="res://textures/gg_DEMON_SWORD/BOK_BEG3.png" type="Texture2D" id=11]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BOK_BEG1.png" type="Texture2D" id=12]
+[ext_resource path="res://textures/gg_DEMON_SWORD/PERED_BEG4.png" type="Texture2D" id=13]
+[ext_resource path="res://textures/gg_DEMON_SWORD/PERED_STOIT.png" type="Texture2D" id=14]
+[ext_resource path="res://textures/gg_DEMON_SWORD/BOK_STOIT.png" type="Texture2D" id=15]
+[ext_resource path="res://textures/gg_DEMON_SWORD/PERED_BEG3.png" type="Texture2D" id=16]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BEG2.png" type="Texture2D" id=17]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BEG3.png" type="Texture2D" id=18]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_STOIT.png" type="Texture2D" id=19]
+[ext_resource path="res://textures/gg_DEMON_SWORD/ZAD_BOK_STOIT.png" type="Texture2D" id=20]
+[ext_resource path="res://textures/gg_DEMON_SWORD/BOK_BEG1.png" type="Texture2D" id=21]
+
+[sub_resource type="BoxShape3D" id=3]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "default down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "default side",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "default sideup",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "default up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "down",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "side",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "sideup",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "up",
+"speed": 10.0
+} ]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 4.37826, 6.62879 )
+current = true
+fov = 100.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+autoplace_priority = 10
+render_priority = 1
+frames = SubResource( 4 )
+animation = "default down"
+playing = true
