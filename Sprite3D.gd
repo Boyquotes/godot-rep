@@ -8,7 +8,6 @@ var acceleration = 5
 var default_animation = 'default down'
 
 var sprite
-var s
 
 func get_mouse_degrees(v1, v2):
 	var deg = (v1.x * v2.x + v1.y * v2.y) / (sqrt(v1.x * v1.x + v1.y * v1.y) * sqrt(v2.x * v2.x + v2.y * v2.y))
