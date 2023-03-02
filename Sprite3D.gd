@@ -6,66 +6,81 @@ var speed = 10
 var acceleration = 5
 
 var default_animation = 'default down'
+var animation = 'down'
+var flip = false
 
 var sprite
 
 func get_mouse_degrees(v1, v2):
+	var dep = 0
+	if v1.x * abs(v2.y) + abs(v2.x) * v1.y > 0:
+		pass
+	elif v1.x * abs(v2.y) + abs(v2.x) * v1.y < 0:
+		v1.x = -v1.x
+		v1.y = -v1.y
+		dep = 180
 	var deg = (v1.x * v2.x + v1.y * v2.y) / (sqrt(v1.x * v1.x + v1.y * v1.y) * sqrt(v2.x * v2.x + v2.y * v2.y))
-	return rad_to_deg(acos(deg))
+	deg = rad_to_deg(acos(deg))
+	deg += dep
+	return round(deg)
 
 
 func _ready():
 	pass
 
 func _input(event):
-	sprite = get_child(2)
 	if event is InputEventMouseMotion:
-		print(get_mouse_degrees({'x':509 - event.position.x, 'y': 301 - event.position.y}, {'x':-509, 'y':301}))
-
+		var deg = get_mouse_degrees({'x':574 - event.position.x, 'y': 302 - event.position.y}, {'x':-574, 'y':302})
+		print(deg)
+		if deg > 290 and deg < 360:
+			default_animation = "default side"
+			flip = false
+		elif deg > -1 and deg < 37:
+			default_animation = "default sideup"
+			flip = false
+		elif deg > 36 and deg < 110:
+			default_animation = "default up"
+			flip = false
+		elif deg > 106 and deg < 130:
+			default_animation = "default sideup"
+			flip = true
+		elif deg > 129 and deg < 189:
+			default_animation = "default side"
+			flip = true
+		elif deg > 190 and deg < 290:
+			default_animation = "default down"
+			flip = true
+			
 
 func _process(delta):
 	sprite = get_child(2)
 	direction = Vector3()
+	sprite.set_flip_h(flip)
 	if !Input.is_action_pressed("ui_down") and !Input.is_action_pressed("ui_up") and !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
 		sprite.set_animation(default_animation)
 	else:
+		sprite.set_animation(animation)
 		if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left"):
 			direction -= transform.basis.x
 			direction -= transform.basis.z
-			sprite.set_animation("sideup")
-			default_animation = 'default sideup'
 		elif Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_right"):
 			direction += transform.basis.x
 			direction -= transform.basis.z
-			sprite.set_animation("sideup")
-			default_animation = 'default sideup'
 		elif Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_left"):
 			direction -= transform.basis.x
 			direction += transform.basis.z
-			sprite.set_animation("down")
-			default_animation = 'default down'
 		elif Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right"):
 			direction += transform.basis.x
 			direction += transform.basis.z
-			sprite.set_animation("down")
-			default_animation = 'default down'
 		else:
 			if Input.is_action_pressed("ui_down"):
 				direction += transform.basis.z
-				sprite.set_animation("down")
-				default_animation = 'default down'
 			if Input.is_action_pressed("ui_up"):
 				direction -= transform.basis.z
-				sprite.set_animation("up")
-				default_animation = 'default up'
 			if Input.is_action_pressed("ui_left"):
 				direction -= transform.basis.x
-				sprite.set_animation("side")
-				default_animation = 'default side'
 			if Input.is_action_pressed("ui_right"):
 				direction += transform.basis.x
-				sprite.set_animation("side")
-				default_animation = 'default side'
 	direction = direction.normalized()
 	velocity = direction * speed
 	velocity.lerp(velocity, acceleration * delta)

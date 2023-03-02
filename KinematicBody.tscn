@@ -142,4 +142,4 @@ fov = 100.0
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 render_priority = 1
 sprite_frames = SubResource("4")
-animation = &"default down"
+animation = &"sideup"
