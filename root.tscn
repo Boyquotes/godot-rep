@@ -9,7 +9,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26816, 0)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1")]
 process_priority = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0324774, 1.59394, 3.76485)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0324774, 2.05359, 8.17703)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201545, -0.0696321, 0.0209904)

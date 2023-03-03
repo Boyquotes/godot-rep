@@ -135,11 +135,14 @@ transform = Transform3D(0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 4.37826, 6.62879)
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 7.29786, 10.7048)
+keep_aspect = 0
 current = true
 fov = 100.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.015
+billboard = 2
 render_priority = 1
 sprite_frames = SubResource("4")
 animation = &"sideup"
